@@ -1,12 +1,12 @@
-# SharpCompress
+# lucefly
 
-SharpCompress is a compression library in pure C# for .NET Framework 4.62, .NET Standard 2.1, .NET 6.0 and NET 8.0 that can unrar, un7zip, unzip, untar unbzip2, ungzip, unlzip with forward-only reading and file random access APIs. Write support for zip/tar/bzip2/gzip/lzip are implemented.
+lucefly is a compression library in pure C# for .NET Framework 4.62, .NET Standard 2.1, .NET 6.0 and NET 8.0 that can unrar, un7zip, unzip, untar unbzip2, ungzip, unlzip with forward-only reading and file random access APIs. Write support for zip/tar/bzip2/gzip/lzip are implemented.
 
 The major feature is support for non-seekable streams so large files can be processed on the fly (i.e. download stream).
 
 GitHub Actions Build -
-[![SharpCompress](https://github.com/adamhathcock/sharpcompress/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/adamhathcock/sharpcompress/actions/workflows/dotnetcore.yml)
-[![Static Badge](https://img.shields.io/badge/API%20Docs-DNDocs-190088?logo=readme&logoColor=white)](https://dndocs.com/d/sharpcompress/api/index.html)
+[![lucefly](https://github.com/adamhathcock/lucefly/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/adamhathcock/lucefly/actions/workflows/dotnetcore.yml)
+[![Static Badge](https://img.shields.io/badge/API%20Docs-DNDocs-190088?logo=readme&logoColor=white)](https://dndocs.com/d/lucefly/api/index.html)
 
 ## Need Help?
 
@@ -26,7 +26,7 @@ RAR is not recommended as it's a propriatory format and the compression is close
 
 ## A Simple Request
 
-Hi everyone. I hope you're using SharpCompress and finding it useful. Please give me feedback on what you'd like to see changed especially as far as usability goes. New feature suggestions are always welcome as well. I would also like to know what projects SharpCompress is being used in. I like seeing how it is used to give me ideas for future versions. Thanks!
+Hi everyone. I hope you're using lucefly and finding it useful. Please give me feedback on what you'd like to see changed especially as far as usability goes. New feature suggestions are always welcome as well. I would also like to know what projects lucefly is being used in. I like seeing how it is used to give me ideas for future versions. Thanks!
 
 Please do not email me directly to ask for help. If you think there is a real issue, please report it here.
 
@@ -43,68 +43,68 @@ I'm always looking for help or ideas. Please submit code or email with ideas. Un
 
 ## Version Log
 
-* [Releases](https://github.com/adamhathcock/sharpcompress/releases)
+* [Releases](https://github.com/adamhathcock/lucefly/releases)
 
 ### Version 0.18
 
-* [Now on Github releases](https://github.com/adamhathcock/sharpcompress/releases/tag/0.18)
+* [Now on Github releases](https://github.com/adamhathcock/lucefly/releases/tag/0.18)
 
 ### Version 0.17.1
 
-* Fix - [Bug Fix for .NET Core on Windows](https://github.com/adamhathcock/sharpcompress/pull/257)
+* Fix - [Bug Fix for .NET Core on Windows](https://github.com/adamhathcock/lucefly/pull/257)
 
 ### Version 0.17.0
 
-* New - Full LZip support! Can read and write LZip files and Tars inside LZip files. [Make LZip a first class citizen. #241](https://github.com/adamhathcock/sharpcompress/issues/241)
-* New - XZ read support! Can read XZ files and Tars inside XZ files. [XZ in SharpCompress #91](https://github.com/adamhathcock/sharpcompress/issues/94)
-* Fix - [Regression - zip file writing on seekable streams always assumed stream start was 0. Introduced with Zip64 writing.](https://github.com/adamhathcock/sharpcompress/issues/244)
-* Fix - [Zip files with post-data descriptors can be properly skipped via decompression](https://github.com/adamhathcock/sharpcompress/issues/162)
+* New - Full LZip support! Can read and write LZip files and Tars inside LZip files. [Make LZip a first class citizen. #241](https://github.com/adamhathcock/lucefly/issues/241)
+* New - XZ read support! Can read XZ files and Tars inside XZ files. [XZ in lucefly #91](https://github.com/adamhathcock/lucefly/issues/94)
+* Fix - [Regression - zip file writing on seekable streams always assumed stream start was 0. Introduced with Zip64 writing.](https://github.com/adamhathcock/lucefly/issues/244)
+* Fix - [Zip files with post-data descriptors can be properly skipped via decompression](https://github.com/adamhathcock/lucefly/issues/162)
 
 ### Version 0.16.2
 
-* Fix [.NET 3.5 should support files and cryptography (was a regression from 0.16.0)](https://github.com/adamhathcock/sharpcompress/pull/251)
-* Fix [Zip per entry compression customization wrote the wrong method into the zip archive](https://github.com/adamhathcock/sharpcompress/pull/249)
+* Fix [.NET 3.5 should support files and cryptography (was a regression from 0.16.0)](https://github.com/adamhathcock/lucefly/pull/251)
+* Fix [Zip per entry compression customization wrote the wrong method into the zip archive](https://github.com/adamhathcock/lucefly/pull/249)
 
 ### Version 0.16.1
 
-* Fix [Preserve compression method when getting a compressed stream](https://github.com/adamhathcock/sharpcompress/pull/235)
-* Fix [RAR entry key normalization fix](https://github.com/adamhathcock/sharpcompress/issues/201)
+* Fix [Preserve compression method when getting a compressed stream](https://github.com/adamhathcock/lucefly/pull/235)
+* Fix [RAR entry key normalization fix](https://github.com/adamhathcock/lucefly/issues/201)
 
 ### Version 0.16.0
 
-* Breaking - [Progress Event Tracking rethink](https://github.com/adamhathcock/sharpcompress/pull/226)
-* Update to VS2017 - [VS2017](https://github.com/adamhathcock/sharpcompress/pull/231) - Framework targets have been changed.
-* New - [Add Zip64 writing](https://github.com/adamhathcock/sharpcompress/pull/211)
-* [Fix invalid/mismatching Zip version flags.](https://github.com/adamhathcock/sharpcompress/issues/164) - This allows nuget/System.IO.Packaging to read zip files generated by SharpCompress
-* [Fix 7Zip directory hiding](https://github.com/adamhathcock/sharpcompress/pull/215/files)
-* [Verify RAR CRC headers](https://github.com/adamhathcock/sharpcompress/pull/220)
+* Breaking - [Progress Event Tracking rethink](https://github.com/adamhathcock/lucefly/pull/226)
+* Update to VS2017 - [VS2017](https://github.com/adamhathcock/lucefly/pull/231) - Framework targets have been changed.
+* New - [Add Zip64 writing](https://github.com/adamhathcock/lucefly/pull/211)
+* [Fix invalid/mismatching Zip version flags.](https://github.com/adamhathcock/lucefly/issues/164) - This allows nuget/System.IO.Packaging to read zip files generated by lucefly
+* [Fix 7Zip directory hiding](https://github.com/adamhathcock/lucefly/pull/215/files)
+* [Verify RAR CRC headers](https://github.com/adamhathcock/lucefly/pull/220)
 
 ### Version 0.15.2
 
-* [Fix invalid headers](https://github.com/adamhathcock/sharpcompress/pull/210) - fixes an issue creating large-ish zip archives that was introduced with zip64 reading.
+* [Fix invalid headers](https://github.com/adamhathcock/lucefly/pull/210) - fixes an issue creating large-ish zip archives that was introduced with zip64 reading.
 
 ### Version 0.15.1
 
-* [Zip64 extending information and ZipReader](https://github.com/adamhathcock/sharpcompress/pull/206)
+* [Zip64 extending information and ZipReader](https://github.com/adamhathcock/lucefly/pull/206)
 
 ### Version 0.15.0
 
-* [Add zip64 support for ZipArchive extraction](https://github.com/adamhathcock/sharpcompress/pull/205)
+* [Add zip64 support for ZipArchive extraction](https://github.com/adamhathcock/lucefly/pull/205)
 
 ### Version 0.14.1
 
-* [.NET Assemblies aren't strong named](https://github.com/adamhathcock/sharpcompress/issues/158)
-* [Pkware encryption for Zip files didn't allow for multiple reads of an entry](https://github.com/adamhathcock/sharpcompress/issues/197)
-* [GZip Entry couldn't be read multiple times](https://github.com/adamhathcock/sharpcompress/issues/198)
+* [.NET Assemblies aren't strong named](https://github.com/adamhathcock/lucefly/issues/158)
+* [Pkware encryption for Zip files didn't allow for multiple reads of an entry](https://github.com/adamhathcock/lucefly/issues/197)
+* [GZip Entry couldn't be read multiple times](https://github.com/adamhathcock/lucefly/issues/198)
 
 ### Version 0.14.0
 
-* [Support for LZip reading in for Tars](https://github.com/adamhathcock/sharpcompress/pull/191)
+* [Support for LZip reading in for Tars](https://github.com/adamhathcock/lucefly/pull/191)
 
 ### Version 0.13.1
 
-* [Fix null password on ReaderFactory. Fix null options on SevenZipArchive](https://github.com/adamhathcock/sharpcompress/pull/188)
-* [Make PpmdProperties lazy to avoid unnecessary allocations.](https://github.com/adamhathcock/sharpcompress/pull/185)
+* [Fix null password on ReaderFactory. Fix null options on SevenZipArchive](https://github.com/adamhathcock/lucefly/pull/188)
+* [Make PpmdProperties lazy to avoid unnecessary allocations.](https://github.com/adamhathcock/lucefly/pull/185)
 
 ### Version 0.13.0
 
@@ -113,12 +113,12 @@ I'm always looking for help or ideas. Please submit code or email with ideas. Un
 
 ### Version 0.12.4
 
-* Forward only zip issue fix https://github.com/adamhathcock/sharpcompress/issues/160
+* Forward only zip issue fix https://github.com/adamhathcock/lucefly/issues/160
 * Try to fix frameworks again by copying targets from JSON.NET
 
 ### Version 0.12.3
 
-* 7Zip fixes https://github.com/adamhathcock/sharpcompress/issues/73
+* 7Zip fixes https://github.com/adamhathcock/lucefly/issues/73
 * Maybe all profiles will work with project.json now
 
 ### Version 0.12.2
@@ -145,7 +145,7 @@ I'm always looking for help or ideas. Please submit code or email with ideas. Un
 
 ### Version 0.11.4
 
-* SharpCompress is now endian neutral (matters for Mono platforms)
+* lucefly is now endian neutral (matters for Mono platforms)
 * Fix for Inflate (need to change implementation)
 * Fixes for RAR detection
 
