@@ -23,8 +23,6 @@ namespace SharpCompress.Archives
     /// </remarks>
     public interface IArchiveFactory : IFactory
     {
-        
-
         /// <summary>
         /// Opens an Archive for random access.
         /// </summary>
@@ -38,19 +36,5 @@ namespace SharpCompress.Archives
         /// <param name="fileInfo">the file to open.</param>
         /// <param name="readerOptions">reading options.</param>
         IArchive Open(System.IO.FileInfo fileInfo, ReaderOptions? readerOptions = null);
-
-        /// <summary>
-        /// Constructor with IEnumerable FileInfo objects, multi and split support.
-        /// </summary>
-        /// <param name="streams"></param>
-        /// <param name="readerOptions">reading options.</param>
-        IArchive Open(IEnumerable<Stream> streams, ReaderOptions? readerOptions = null);
-
-        /// <summary>
-        /// Constructor with IEnumerable Stream objects, multi and split support.
-        /// </summary>
-        /// <param name="fileInfos"></param>
-        /// <param name="readerOptions">reading options.</param>
-        IArchive Open(IEnumerable<System.IO.FileInfo> fileInfos, ReaderOptions? readerOptions = null);
     }
 }
