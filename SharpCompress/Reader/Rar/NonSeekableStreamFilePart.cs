@@ -18,7 +18,7 @@ namespace SharpCompress.Reader.Rar
 
         internal override string FilePartName
         {
-            get { return "Unknown Stream - File Entry: " + base.FileHeader.FileName; }
+            get { return "Unknown Stream - File Entry: " + FileHeader.FileName; }
         }
     }
 }
