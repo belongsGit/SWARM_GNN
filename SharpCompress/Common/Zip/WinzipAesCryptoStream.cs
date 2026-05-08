@@ -9,49 +9,33 @@ namespace SharpCompress.Common.Zip
         private const int BLOCK_SIZE_IN_BYTES = 16;
         private readonly SymmetricAlgorithm cipher;
         private readonly byte[] counter = new byte[BLOCK_SIZE_IN_BYTES];
-        private readonly HMACSHA1 hmac;
         private readonly Stream stream;
         private readonly ICryptoTransform transform;
-        private int _nonce = 1;
+        private int nonce = 1;
         private byte[] counterOut = new byte[BLOCK_SIZE_IN_BYTES];
         private bool isFinalBlock;
-        private CryptoMode mode;
         private long totalBytesLeftToRead;
         private bool isDisposed;
 
-        internal WinzipAesCryptoStream(Stream stream, WinzipAesEncryptionData winzipAesEncryptionData, long length,
-                                       CryptoMode mode)
+        internal WinzipAesCryptoStream(Stream stream, WinzipAesEncryptionData winzipAesEncryptionData, long length)
         {
-            this.mode = mode;
             this.stream = stream;
             totalBytesLeftToRead = length;
-
-            hmac = new HMACSHA1(winzipAesEncryptionData.IvBytes);
 
             cipher = CreateCipher(winzipAesEncryptionData);
 
             var iv = new byte[BLOCK_SIZE_IN_BYTES];
             transform = cipher.CreateEncryptor(winzipAesEncryptionData.KeyBytes, iv);
-
-            //if (_mode == CryptoMode.Encrypt)
-            //{
-            //    _iobuf = new byte[2048];
-            //    _PendingWriteBlock = new byte[BLOCK_SIZE_IN_BYTES];
-            //}
         }
 
         private SymmetricAlgorithm CreateCipher(WinzipAesEncryptionData winzipAesEncryptionData)
         {
-#if !PORTABLE
             RijndaelManaged cipher = new RijndaelManaged();
             cipher.BlockSize = BLOCK_SIZE_IN_BYTES * 8;
             cipher.KeySize = winzipAesEncryptionData.KeyBytes.Length * 8;
             cipher.Mode = CipherMode.ECB;
             cipher.Padding = PaddingMode.None;
             return cipher;
-#else
-            throw new NotSupportedException("Cannot decrypt Winzip AES with Silverlight or WP7.");
-#endif
         }
 
         public override bool CanRead
@@ -133,12 +117,11 @@ namespace SharpCompress.Common.Zip
                                   : bytesRemaining;
 
             // update the counter
-            Array.Copy(BitConverter.GetBytes(_nonce++), 0, counter, 0, 4);
+            Array.Copy(BitConverter.GetBytes(nonce++), 0, counter, 0, 4);
 
             // Determine if this is the final block
             if ((bytesToRead == bytesRemaining) && (totalBytesLeftToRead == 0))
             {
-                hmac.TransformFinalBlock(buffer, offset, bytesToRead);
                 counterOut = transform.TransformFinalBlock(counter,
                                                            0,
                                                            BLOCK_SIZE_IN_BYTES);
@@ -146,7 +129,6 @@ namespace SharpCompress.Common.Zip
             }
             else
             {
-                hmac.TransformBlock(buffer, offset, bytesToRead, null, 0);
                 transform.TransformBlock(counter,
                                          0, // offset
                                          BLOCK_SIZE_IN_BYTES,

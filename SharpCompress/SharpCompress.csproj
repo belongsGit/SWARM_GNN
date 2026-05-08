@@ -152,8 +152,10 @@
     <Compile Include="Common\Zip\SeekableZipHeaderFactory.cs" />
     <Compile Include="Common\Zip\StreamingZipFilePart.cs" />
     <Compile Include="Common\Zip\StreamingZipHeaderFactory.cs" />
+    <Compile Include="Common\Zip\WinzipAesCryptoStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Common\Zip\WinzipAesEncryptionData.cs" />
-    <Compile Include="Common\Zip\WinzipAesCryptoStream.cs" />
     <Compile Include="Common\Zip\WinzipAesKeySize.cs" />
     <Compile Include="Common\Zip\ZipVolume.cs" />
     <Compile Include="Compressor\BZip2\BZip2Constants.cs" />
